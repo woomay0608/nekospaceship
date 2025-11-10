@@ -9,4 +9,8 @@ public class ChaseGhost : BaseGhost
         _navMeshAgent.SetDestination(_playerPos.transform.position);
 
     }
+    public override void ChangePos()
+    {
+        base.ChangePos();
+    }
 }

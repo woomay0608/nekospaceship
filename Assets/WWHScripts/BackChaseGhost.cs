@@ -19,4 +19,9 @@ public class BackChaseGhost : BaseGhost
         //else 집으로 돌아가요 내부에서 집에 도착했으면 isRun = false;
 
     }
+
+    public override void ChangePos()
+    {
+        base.ChangePos();
+    }
 }

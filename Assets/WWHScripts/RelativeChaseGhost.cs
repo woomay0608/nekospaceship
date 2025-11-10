@@ -23,4 +23,8 @@ public class RelativeChaseGhost : BaseGhost
 
 
     }
+    public override void ChangePos()
+    {
+        base.ChangePos();
+    }
 }

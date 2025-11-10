@@ -17,5 +17,9 @@ public class FrontChaseGhost : BaseGhost
 
 
     }
+    public override void ChangePos()
+    {
+        base.ChangePos();
+    }
 
 }
