@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 public class BaseGhost : MonoBehaviour
 {
+    protected Animator _animator;
     protected NavMeshAgent _navMeshAgent;
     protected Transform _playerPos;
     public EGhostType GhostType;
@@ -15,7 +16,7 @@ public class BaseGhost : MonoBehaviour
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-
+        _animator =GetComponent<Animator>();
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
     }
@@ -59,11 +60,14 @@ public class BaseGhost : MonoBehaviour
     {
         if (_isNight)
         {
+            _animator.SetBool("IsRun", false);
+            _animator.SetTrigger("IsDeath");
             _navMeshAgent.isStopped = true;
         }
         else
         {
             _navMeshAgent.isStopped = false;
+            _animator.SetBool("IsRun", true) ;
         }
     }
 
