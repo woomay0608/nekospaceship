@@ -4,30 +4,25 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private IMovement movement;
+    public Vector2 inputVec;
+    public float speed;
 
-    public void CurstomUpdate(Vector2 inputDir)
+    Rigidbody2D rigid;
+    void Awake()
     {
-        movement?.Move(inputDir);
-       
-        
-    }
-    public void StartGame()
-    {
-        movement?.SetEnable(true);
+        rigid = GetComponent<Rigidbody2D>();
     }
 
-  
-    public void StopGame()
+    void Update()
     {
-        movement?.SetEnable(false);
+        inputVec.x = Input.GetAxisRaw("Horizontal");
+        inputVec.y = Input.GetAxisRaw("Vertical");
     }
 
-    private void Awake()
+    private void FixedUpdate()
     {
-        if (!TryGetComponent<IMovement>(out movement))
-            Debug.Log("PlayerController.cs - Awake() - movement참조 실패 ");
-
+        Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
+        rigid.MovePosition(rigid.position + nextVec);
     }
 }
 
