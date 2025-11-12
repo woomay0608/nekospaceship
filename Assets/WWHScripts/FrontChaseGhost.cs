@@ -4,7 +4,12 @@ public class FrontChaseGhost : BaseGhost
 {
     public override void ChasePlayer()
     {
-        base.ChasePlayer();
+        
+
+        if (_navMeshAgent.remainingDistance <= 2.5f)
+        {
+            ChangeStatus(EAIStatus.Attack);
+        }
 
         Vector2 PlayerPos = _playerPos.position;
         //Vector2 PlayerDir;
@@ -17,9 +22,6 @@ public class FrontChaseGhost : BaseGhost
 
 
     }
-    public override void ChangePos()
-    {
-        base.ChangePos();
-    }
+
 
 }

@@ -7,4 +7,11 @@ public enum EGhostType
     BackChase,
 }
 
+public enum EAIStatus
+{
+    Chase,
+    Attack,
+    Night,
+}
+
 

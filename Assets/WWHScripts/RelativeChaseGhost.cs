@@ -1,12 +1,15 @@
 
 
-using UnityEngine;
-
 public class RelativeChaseGhost : BaseGhost
 {
     public override void ChasePlayer()
     {
-        base.ChasePlayer();
+        
+
+        if(_navMeshAgent.remainingDistance <= 2.5f)
+        {
+            ChangeStatus(EAIStatus.Attack);
+        }
 
         //Vector2 PlayerPos = _playerPos.position;
         //Vector2 PlayerDir;
@@ -19,12 +22,9 @@ public class RelativeChaseGhost : BaseGhost
         //Vector2 TargetVector = DirVector * 2 + transform.position;
 
         // _navMeshAgent.SetDestination(TargetVector);
-
+        //
 
 
     }
-    public override void ChangePos()
-    {
-        base.ChangePos();
-    }
+
 }
