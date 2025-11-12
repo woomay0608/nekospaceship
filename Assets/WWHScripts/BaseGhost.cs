@@ -75,7 +75,7 @@ public class BaseGhost : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        //ÃÑ¾ËÃ³¸®
+       
     }
 
     public IEnumerator DeathCorountine()
@@ -89,7 +89,10 @@ public class BaseGhost : MonoBehaviour
    
     public virtual void ChasePlayer()
     {
-     
+        if (_navMeshAgent.remainingDistance <= 2.5f && EGhostType.Chase != GhostType)
+        {
+            ChangeStatus(EAIStatus.Attack);
+        }
     }
 
     public void AttackPlayer()
