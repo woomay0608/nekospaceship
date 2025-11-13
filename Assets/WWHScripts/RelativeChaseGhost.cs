@@ -28,7 +28,7 @@ public class RelativeChaseGhost : BaseGhost
         Vector2 FrontPos = PlayerPos + playerOffset;
 
         Vector2 DirVector = FrontPos - (Vector2)transform.position;
-        Vector2 TargetVector = DirVector * 2;
+        Vector2 TargetVector = DirVector *2;
 
         _navMeshAgent.SetDestination(TargetVector);
 
