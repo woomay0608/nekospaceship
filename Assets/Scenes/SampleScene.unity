@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &193103568 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1557669820428315016, guid: dd7555a665476b14aaaafbbbc243cf21, type: 3}
+  m_PrefabInstance: {fileID: 735854343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,6 +371,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6921978372379037319, guid: dd7555a665476b14aaaafbbbc243cf21, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7254042335662282728, guid: dd7555a665476b14aaaafbbbc243cf21, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.13
@@ -409,19 +418,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1557669820428315016, guid: dd7555a665476b14aaaafbbbc243cf21, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 735854351}
   m_SourcePrefab: {fileID: 100100000, guid: dd7555a665476b14aaaafbbbc243cf21, type: 3}
 --- !u!114 &735854344 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6921978372379037319, guid: dd7555a665476b14aaaafbbbc243cf21, type: 3}
   m_PrefabInstance: {fileID: 735854343}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 193103568}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 086b987e79ac2d848b834b0531920197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+--- !u!114 &735854351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193103568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4447298005aefb4fa9eead6cce1db46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutoProjectileLauncher
+  _projectilePrefab: {fileID: 5013659409690027999, guid: 04c7247d18a6e8844a41c9eb8ff8157b, type: 3}
+  _fireRate: 3
+  _firePoint: {fileID: 0}
+  _projectileSpeed: 20
 --- !u!1001 &941484100
 PrefabInstance:
   m_ObjectHideFlags: 0
