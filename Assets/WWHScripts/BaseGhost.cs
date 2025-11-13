@@ -6,14 +6,14 @@ public class BaseGhost : MonoBehaviour
 {
     protected Animator _animator;
     protected NavMeshAgent _navMeshAgent;
-    protected Transform _playerPos;
+    public PlayerController _playerPos;
     public EGhostType GhostType;
     
     [Range(0f, 10f)] public float ReviveTime;
     [Range(1f, 10f)] public float TileSize;
     [SerializeField] public Vector3 RespawnPos;
 
-    [SerializeField] EAIStatus _curStatus;
+    [SerializeField] protected EAIStatus _curStatus;
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -28,11 +28,11 @@ public class BaseGhost : MonoBehaviour
         _animator.SetFloat("MoveX", _navMeshAgent.velocity.normalized.x);
        _animator.SetFloat("MoveY", _navMeshAgent.velocity.normalized.y);
 
-        if (_curStatus == EAIStatus.Chase)
+        if (_curStatus == EAIStatus.Chase || _curStatus == EAIStatus.Home)
         {
             ChasePlayer();
         }
-        else if (_curStatus == EAIStatus.Attack) 
+        else if (_curStatus == EAIStatus.Attack)
         {
             AttackPlayer();
         }
@@ -43,16 +43,16 @@ public class BaseGhost : MonoBehaviour
         
     }
 
-    public void SetPlayer(Transform transform)
+    public void SetPlayer(PlayerController Controll)
     {
-        _playerPos = transform;
+        _playerPos = Controll;
     }
 
     public void ChangeStatus(EAIStatus eAI)
     {
         _curStatus = eAI;
 
-       if(_curStatus == EAIStatus.Chase || _curStatus == EAIStatus.Attack)
+       if(_curStatus == EAIStatus.Chase || _curStatus == EAIStatus.Attack || _curStatus == EAIStatus.Home)
         {
             _navMeshAgent.isStopped = false;
             _animator.SetBool("IsRun", true);
@@ -98,7 +98,7 @@ public class BaseGhost : MonoBehaviour
     public void AttackPlayer()
     {
         if(_playerPos != null)
-        _navMeshAgent.SetDestination(_playerPos.position);
+        _navMeshAgent.SetDestination(_playerPos.transform.position);
 
         if (_navMeshAgent.remainingDistance >= 2.5f)
         {

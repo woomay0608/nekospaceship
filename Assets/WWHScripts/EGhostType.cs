@@ -12,6 +12,8 @@ public enum EAIStatus
     Chase,
     Attack,
     Night,
+    Home,
+  
 }
 
 

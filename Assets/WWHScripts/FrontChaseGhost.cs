@@ -11,13 +11,13 @@ public class FrontChaseGhost : BaseGhost
             ChangeStatus(EAIStatus.Attack);
         }
 
-        Vector2 PlayerPos = _playerPos.position;
-        //Vector2 PlayerDir;
+        Vector2 PlayerPos = _playerPos.transform.position;
+        Vector2 PlayerDir = _playerPos.GetRigidbody2D().linearVelocity;
 
 
-        //Vector2 playerOffset = 2f * TileSize * PlayerDir;
+        Vector2 playerOffset = 2f * TileSize * PlayerDir;
         //pos¶û dir ÇÕÄ¡±â
-        _navMeshAgent.SetDestination(PlayerPos);
+        _navMeshAgent.SetDestination(PlayerPos + playerOffset);
         
 
 
