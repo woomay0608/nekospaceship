@@ -373,7 +373,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6921978372379037319, guid: dd7555a665476b14aaaafbbbc243cf21, type: 3}
       propertyPath: speed
-      value: 3
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 7254042335662282728, guid: dd7555a665476b14aaaafbbbc243cf21, type: 3}
       propertyPath: m_LocalPosition.x
@@ -448,8 +448,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AutoProjectileLauncher
   _projectilePrefab: {fileID: 5013659409690027999, guid: 04c7247d18a6e8844a41c9eb8ff8157b, type: 3}
   _fireRate: 3
-  _firePoint: {fileID: 0}
   _projectileSpeed: 20
+  _firePoint: {fileID: 0}
 --- !u!1001 &941484100
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -463,8 +463,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 735854344}
     - target: {fileID: 1113519424407392767, guid: 1e99c9290714c2042b4c464b683920e9, type: 3}
+      propertyPath: m_Speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1113519424407392767, guid: 1e99c9290714c2042b4c464b683920e9, type: 3}
       propertyPath: m_Acceleration
-      value: 3
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1113519424407392767, guid: 1e99c9290714c2042b4c464b683920e9, type: 3}
       propertyPath: m_StoppingDistance
@@ -572,8 +576,12 @@ PrefabInstance:
       value: BackChaseModel
       objectReference: {fileID: 0}
     - target: {fileID: 5722927041417238624, guid: 1ec1fb5a828e2f74ebc123c2482162a5, type: 3}
+      propertyPath: m_Speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5722927041417238624, guid: 1ec1fb5a828e2f74ebc123c2482162a5, type: 3}
       propertyPath: m_Acceleration
-      value: 3
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 5722927041417238624, guid: 1ec1fb5a828e2f74ebc123c2482162a5, type: 3}
       propertyPath: m_StoppingDistance
@@ -641,8 +649,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 735854344}
     - target: {fileID: 4152348763844524226, guid: ecdfd4b72486fc44aaa7626f2a7292f9, type: 3}
+      propertyPath: m_Speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4152348763844524226, guid: ecdfd4b72486fc44aaa7626f2a7292f9, type: 3}
       propertyPath: m_Acceleration
-      value: 3
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4152348763844524226, guid: ecdfd4b72486fc44aaa7626f2a7292f9, type: 3}
       propertyPath: m_StoppingDistance
@@ -666,8 +678,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 650237394577661191, guid: 6f303e77b09034147adb12b4729b9eee, type: 3}
+      propertyPath: m_Speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 650237394577661191, guid: 6f303e77b09034147adb12b4729b9eee, type: 3}
       propertyPath: m_Acceleration
-      value: 3
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 650237394577661191, guid: 6f303e77b09034147adb12b4729b9eee, type: 3}
       propertyPath: m_StoppingDistance
