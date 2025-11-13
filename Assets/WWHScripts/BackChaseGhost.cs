@@ -32,7 +32,7 @@ public class BackChaseGhost : BaseGhost
             {
                 _navMeshAgent.SetDestination(BackPos);
 
-                if (_navMeshAgent.remainingDistance <= 2f) 
+                if (_navMeshAgent.remainingDistance <= 4f) 
                 {
                     ChangeStatus(EAIStatus.Home);
                 }

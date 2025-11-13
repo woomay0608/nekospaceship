@@ -226,7 +226,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -545,7 +545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5722927041417238624, guid: 1ec1fb5a828e2f74ebc123c2482162a5, type: 3}
       propertyPath: m_Acceleration
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5722927041417238624, guid: 1ec1fb5a828e2f74ebc123c2482162a5, type: 3}
       propertyPath: m_StoppingDistance
@@ -614,7 +614,7 @@ PrefabInstance:
       objectReference: {fileID: 735854344}
     - target: {fileID: 4152348763844524226, guid: ecdfd4b72486fc44aaa7626f2a7292f9, type: 3}
       propertyPath: m_Acceleration
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4152348763844524226, guid: ecdfd4b72486fc44aaa7626f2a7292f9, type: 3}
       propertyPath: m_StoppingDistance
@@ -639,7 +639,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 650237394577661191, guid: 6f303e77b09034147adb12b4729b9eee, type: 3}
       propertyPath: m_Acceleration
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 650237394577661191, guid: 6f303e77b09034147adb12b4729b9eee, type: 3}
       propertyPath: m_StoppingDistance

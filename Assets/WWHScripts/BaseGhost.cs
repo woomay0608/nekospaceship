@@ -112,7 +112,7 @@ public class BaseGhost : MonoBehaviour
 
     public virtual void ChasePlayer()
     {
-        if (_navMeshAgent.remainingDistance <= 4f && EGhostType.Chase != GhostType)
+        if (_navMeshAgent.remainingDistance <= 3.5f && EGhostType.Chase != GhostType)
         {
             ChangeStatus(EAIStatus.Attack);
         }
@@ -123,7 +123,7 @@ public class BaseGhost : MonoBehaviour
         if (_playerPos != null)
             _navMeshAgent.SetDestination(_playerPos.transform.position);
 
-        if (_navMeshAgent.remainingDistance >= 4f)
+        if (_navMeshAgent.remainingDistance >= 4.5f)
         {
             ChangeStatus(EAIStatus.Chase);
         }
