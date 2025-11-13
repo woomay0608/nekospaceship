@@ -4,19 +4,27 @@ public class FrontChaseGhost : BaseGhost
 {
     public override void ChasePlayer()
     {
-        
-
-        if (_navMeshAgent.remainingDistance <= 2.5f)
-        {
-            ChangeStatus(EAIStatus.Attack);
-        }
+        base.ChasePlayer();
 
         Vector2 PlayerPos = _playerPos.transform.position;
-        Vector2 PlayerDir = _playerPos.GetRigidbody2D().linearVelocity;
+        Vector2 PlayerDir;
 
+        Vector2 logicalPos = (PlayerPos - _lastPos) / Time.fixedDeltaTime;
 
+        if(logicalPos.sqrMagnitude > 0.01f)
+        {
+            PlayerDir = logicalPos.normalized;
+            _lastDir = PlayerDir;
+        }
+        else
+        {
+            PlayerDir = _lastDir;
+        }
+        _lastPos = PlayerPos;
         Vector2 playerOffset = 2f * TileSize * PlayerDir;
-        //pos¶û dir ÇÕÄ¡±â
+
+
+      
         _navMeshAgent.SetDestination(PlayerPos + playerOffset);
         
 

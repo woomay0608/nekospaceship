@@ -5,43 +5,51 @@ using UnityEngine;
 public class BackChaseGhost : BaseGhost
 {
 
- 
+
     public override void ChasePlayer()
     {
-
-
         Vector2 PlayerPos = _playerPos.transform.position;
-        Vector2 PlayerDir = _playerPos.GetRigidbody2D().linearVelocity;
+        Vector2 PlayerDir;
 
+        Vector2 logicalPos = (PlayerPos - _lastPos) / Time.fixedDeltaTime;
 
-        Vector2 PlayerOffset = -2f * TileSize * PlayerDir;
-        Vector2 BackPos = PlayerPos + PlayerOffset;
-
-
-
-        if (_curStatus == EAIStatus.Chase || _curStatus == EAIStatus.Attack || _curStatus == EAIStatus.Night)
+        if (logicalPos.sqrMagnitude > 0.01f)
         {
-
-            _navMeshAgent.SetDestination(BackPos);
-            if (_navMeshAgent.remainingDistance <= 3f)
-            {
-                ChangeStatus(EAIStatus.Home);
-            }
-
+            PlayerDir = logicalPos.normalized;
+            _lastDir = PlayerDir;
         }
         else
         {
-            Debug.Log(RespawnPos.ToString());
-            _navMeshAgent.SetDestination(RespawnPos);
-            if(_navMeshAgent.remainingDistance < 0.5f)
-            {
-                ChangeStatus(EAIStatus.Chase);
-
-            }
+            PlayerDir = _lastDir;
         }
+        _lastPos = PlayerPos;
+        Vector2 playerOffset = -2f * TileSize * PlayerDir;
+        Vector2 BackPos = PlayerPos + playerOffset;
 
+        if (_navMeshAgent.pathStatus == UnityEngine.AI.NavMeshPathStatus.PathComplete)
+        {
+            if (_curStatus == EAIStatus.Chase || _curStatus == EAIStatus.Attack)
+            {
+                _navMeshAgent.SetDestination(BackPos);
+
+                if (_navMeshAgent.remainingDistance <= 2f) 
+                {
+                    ChangeStatus(EAIStatus.Home);
+                }
+            }
+            else
+            {
+                if (_navMeshAgent.remainingDistance <= 2f) 
+                {
+                    ChangeStatus(EAIStatus.Chase);
+                } 
+            }
+            
+        }
+           
 
     }
+
 
 
 }

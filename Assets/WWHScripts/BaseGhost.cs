@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,26 +9,37 @@ public class BaseGhost : MonoBehaviour
     protected NavMeshAgent _navMeshAgent;
     public PlayerController _playerPos;
     public EGhostType GhostType;
-    
+
     [Range(0f, 10f)] public float ReviveTime;
     [Range(1f, 10f)] public float TileSize;
     [SerializeField] public Vector3 RespawnPos;
 
     [SerializeField] protected EAIStatus _curStatus;
+
+    //Character Dir
+    protected Vector2 _lastPos;
+    protected Vector2 _lastDir = Vector2.up;
     void Start()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _animator =GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
+        StartCoroutine(StartTarget());
+
+        _lastPos = _playerPos.transform.position;
+
+
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        _animator.SetFloat("MoveX", _navMeshAgent.velocity.normalized.x);
-       _animator.SetFloat("MoveY", _navMeshAgent.velocity.normalized.y);
+  
+  
 
+
+    public IEnumerator StartTarget()
+    {
+       yield return new WaitForSeconds(0.3f);
         if (_curStatus == EAIStatus.Chase || _curStatus == EAIStatus.Home)
         {
             ChasePlayer();
@@ -40,7 +52,18 @@ public class BaseGhost : MonoBehaviour
         {
 
         }
+
+    }
+    void Update()
+    {
+        _animator.SetFloat("MoveX", _navMeshAgent.velocity.normalized.x);
+        _animator.SetFloat("MoveY", _navMeshAgent.velocity.normalized.y);
         
+    }
+
+    private void FixedUpdate()
+    {
+        StartCoroutine(StartTarget());
     }
 
     public void SetPlayer(PlayerController Controll)
@@ -52,12 +75,12 @@ public class BaseGhost : MonoBehaviour
     {
         _curStatus = eAI;
 
-       if(_curStatus == EAIStatus.Chase || _curStatus == EAIStatus.Attack || _curStatus == EAIStatus.Home)
+        if (_curStatus == EAIStatus.Chase || _curStatus == EAIStatus.Attack || _curStatus == EAIStatus.Home)
         {
             _navMeshAgent.isStopped = false;
             _animator.SetBool("IsRun", true);
         }
-       else
+        else
         {
             _animator.SetBool("IsRun", false);
             _animator.SetTrigger("IsDeath");
@@ -68,14 +91,14 @@ public class BaseGhost : MonoBehaviour
     {
         ChangeStatus(EAIStatus.Night);
     }
-     public void SetDay()
+    public void SetDay()
     {
         ChangeStatus(EAIStatus.Chase);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-       
+
     }
 
     public IEnumerator DeathCorountine()
@@ -86,10 +109,10 @@ public class BaseGhost : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-   
+
     public virtual void ChasePlayer()
     {
-        if (_navMeshAgent.remainingDistance <= 2.5f && EGhostType.Chase != GhostType)
+        if (_navMeshAgent.remainingDistance <= 4f && EGhostType.Chase != GhostType)
         {
             ChangeStatus(EAIStatus.Attack);
         }
@@ -97,10 +120,10 @@ public class BaseGhost : MonoBehaviour
 
     public void AttackPlayer()
     {
-        if(_playerPos != null)
-        _navMeshAgent.SetDestination(_playerPos.transform.position);
+        if (_playerPos != null)
+            _navMeshAgent.SetDestination(_playerPos.transform.position);
 
-        if (_navMeshAgent.remainingDistance >= 2.5f)
+        if (_navMeshAgent.remainingDistance >= 4f)
         {
             ChangeStatus(EAIStatus.Chase);
         }
@@ -113,7 +136,7 @@ public class BaseGhost : MonoBehaviour
             transform.position = RespawnPos;
         }
 
-    } 
+    }
 
 
 }
