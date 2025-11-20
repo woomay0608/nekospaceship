@@ -40,7 +40,7 @@ public class BaseGhost : MonoBehaviour
     public IEnumerator StartTarget()
     {
        yield return new WaitForSeconds(0.3f);
-        if (_curStatus == EAIStatus.Chase || _curStatus == EAIStatus.Home)
+        if (_curStatus == EAIStatus.Chase || _curStatus == EAIStatus.Home )
         {
             ChasePlayer();
         }
