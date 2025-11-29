@@ -6,7 +6,7 @@ public class ScoreTest : MonoBehaviour
 
     void Start()
     {
-        phase = FindObjectOfType<DayNightSystem>();
+        phase = FindAnyObjectByType<DayNightSystem>();
     }
 
     void Update()
